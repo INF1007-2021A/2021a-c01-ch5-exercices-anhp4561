@@ -6,29 +6,74 @@ from typing import List
 
 
 def convert_to_absolute(number: float) -> float:
-    return 0
-
+    absolute = ((number**2)**(1/2))
+    return absolute
 
 def use_prefixes() -> List[str]:
     prefixes, suffixe = 'JKLMNOPQ', 'ack'
-
-    return [""]
-
+    noms = []
+    nom=""
+    for i in prefixes :
+        nom =i+suffixe
+        noms.append(nom)
+    return noms
 
 def prime_integer_summation() -> int:
-    return 0
+    prime_numbers = []
+    number = 2
+    while True:
+        if (len(prime_numbers) < 100):
+            is_prime = True
+            for i in range(2, number, 1):
+                modulo = number % i
+                if (modulo == 0):
+                    is_prime = False
+            if (is_prime == True):
+                prime_numbers.append(number)
+            number += 1
+        if (len(prime_numbers) == 100):
+            break
+        summation= sum(prime_numbers)
+    print(summation)
+
+    return summation
 
 
 def factorial(number: int) -> int:
-    return 0
+    facto = 1
+    for i in range (1,number+1,1):
+        facto*=i
+    return facto
 
 
 def use_continue() -> None:
-    pass
+    liste = []
+    for i in range (1,11,1):
+        if (i==5):
+            continue
+        liste.append(i)
+    print (liste)
+
 
 
 def verify_ages(groups: List[List[int]]) -> List[bool]:
-    return []
+    acceptance = []
+    for group in groups:
+        is_acceptable = True
+        if (len(group)>10 or len(group)<3):
+            is_acceptable =False
+        for member in group:
+            if member < 18:
+                is_acceptable = False
+        is_fifty = 50
+        if member > 70 and is_fifty in group :
+            is_acceptable = False
+        is_25 = 25
+        if is_25 in group:
+            is_acceptable = False
+        acceptance.append (is_acceptable)
+
+    return acceptance
 
 
 def main() -> None:
