@@ -20,9 +20,9 @@ def use_prefixes() -> List[str]:
 
 def prime_integer_summation() -> int:
     prime_numbers = []
-    number = 1
+    number = 2
     while True:
-        if (len(prime_numbers) < 100):
+        if (len(prime_numbers) <100):
             is_prime = True
             for i in range(2, number, 1):
                 modulo = number % i
@@ -33,7 +33,8 @@ def prime_integer_summation() -> int:
             number += 1
         if (len(prime_numbers) == 100):
             break
-        summation= sum(prime_numbers)
+
+    summation= sum(prime_numbers)
 
     return summation
 
@@ -61,17 +62,17 @@ def verify_ages(groups: List[List[int]]) -> List[bool]:
         is_acceptable = True
         if (len(group)>10 or len(group)<3):
             is_acceptable = False
-        for member in group:
-            if member < 18:
-                is_acceptable = False
-        member_fifty = 50
-        for member in group:
-            if member > 70 and (member_fifty in group):
-                is_acceptable = False
-        for member in group:
-            member_twenty5 = 25
-            if member_twenty5 in group:
-                is_acceptable = False
+        member_twenty5 = 25
+        if member_twenty5 in group:
+            is_acceptable = True
+        else:
+            for member in group:
+                if member < 18:
+                    is_acceptable = False
+            member_fifty = 50
+            for member in group:
+                if member > 70 and (member_fifty in group):
+                    is_acceptable = False
         acceptance.append(is_acceptable)
 
     return acceptance
@@ -84,7 +85,6 @@ def main() -> None:
     print(f"La liste des noms générés avec les préfixes est: {use_prefixes()}")
 
     print(f"La somme des 100 premiers nombre premier est : {prime_integer_summation()}")
-
     number = 10
     print(f"La factiorelle du nombre {number} est: {factorial(number)}")
     
