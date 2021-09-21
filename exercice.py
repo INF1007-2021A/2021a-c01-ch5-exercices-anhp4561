@@ -20,7 +20,7 @@ def use_prefixes() -> List[str]:
 
 def prime_integer_summation() -> int:
     prime_numbers = []
-    number = 2
+    number = 1
     while True:
         if (len(prime_numbers) < 100):
             is_prime = True
@@ -34,7 +34,6 @@ def prime_integer_summation() -> int:
         if (len(prime_numbers) == 100):
             break
         summation= sum(prime_numbers)
-    print(summation)
 
     return summation
 
@@ -61,17 +60,19 @@ def verify_ages(groups: List[List[int]]) -> List[bool]:
     for group in groups:
         is_acceptable = True
         if (len(group)>10 or len(group)<3):
-            is_acceptable =False
+            is_acceptable = False
         for member in group:
             if member < 18:
                 is_acceptable = False
-        is_fifty = 50
-        if member > 70 and is_fifty in group :
-            is_acceptable = False
-        is_25 = 25
-        if is_25 in group:
-            is_acceptable = False
-        acceptance.append (is_acceptable)
+        member_fifty = 50
+        for member in group:
+            if member > 70 and (member_fifty in group):
+                is_acceptable = False
+        for member in group:
+            member_twenty5 = 25
+            if member_twenty5 in group:
+                is_acceptable = False
+        acceptance.append(is_acceptable)
 
     return acceptance
 
